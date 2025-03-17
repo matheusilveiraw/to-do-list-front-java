@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-task-list',
@@ -6,6 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./task-list.component.css']
 })
 export class TaskListComponent {
+  @Input() listTitle: string = ''; 
   tasks = [
     { id: 1, title: 'Estudar Angular', completed: false },
     { id: 2, title: 'Fazer compras', completed: false }

@@ -1,6 +1,4 @@
-<h2>Tarefas Pendentes</h2>
+<h2>{{ listTitle }}</h2> 
 <ul>
-  <!-- <app-task-item *ngFor="let task of tasks" [task]="task"></app-task-item> -->
   <li *ngFor="let task of tasks">{{ task.title }}</li>
-
 </ul>
