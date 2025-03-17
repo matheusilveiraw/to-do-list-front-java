@@ -1,27 +1,96 @@
-# ToDoListFrontJava
+# To-Do List API
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
+Este projeto é uma API para gerenciamento de tarefas (*To-Do List*) desenvolvida com **Spring Boot** e **MySQL**.
 
-## Development server
+## 🛠 Tecnologias Utilizadas
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+- **Java 17**
+- **Spring Boot 3.4.3**
+- **MySQL**
+- **Maven**
+- **Hibernate (JPA)**
 
-## Code scaffolding
+## 🎯 MVP do Projeto
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+A API contará com as seguintes funcionalidades inicialmente:
 
-## Build
+- **Criar** tarefas (`POST`)
+- **Visualizar** tarefas (`GET`)
+- **Atualizar** tarefas (`PUT`)
+- **Excluir** tarefas (`DELETE`)
+- **Marcar e desmarcar** tarefas como concluídas
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### 📌 Estrutura básica da tarefa:
 
-## Running unit tests
+Cada tarefa conterá os seguintes atributos inicialmente:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- `id` (identificador único)
+- `nome` (título da tarefa)
+- `descrição` (detalhes sobre a tarefa)
+- `status` (indica se a tarefa está concluída ou não)
 
-## Running end-to-end tests
+## 📜 Log de Atualizações
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### 15/03/2025
+- **GET**: Implementada a busca de todas as tarefas. (/api/todos)
+- **POST**: Implementado o endpoint para criação de tarefas. (/api/todos)
+- **DELETE**: Implementada a exclusão de tarefas. (/api/todos/id)
+- **PUT**: Implementada a atualização de tarefas. (/api/todos/id)
+- **GET**: Criado endpoint para buscar tarefa individual. (/api/todos/id)
+- **PUT**: Implementada a finalização de tarefa (alterando o status para concluída). (/api/todos/id/finalizar)
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## 🚀 Tutorial: Como Baixar e Testar o Projeto
+
+### Pré-requisitos
+
+- **Java 17** instalado na sua máquina.
+- **Maven** instalado (ou você pode usar o Maven Wrapper, se disponível no projeto).
+- **MySQL** instalado e em execução.
+
+### Passo 1: Clonar o Repositório
+
+Abra o terminal e execute o comando abaixo para clonar o repositório:
+
+```bash
+git clone https://github.com/matheusilveiraw/to-do-list-java
+```
+
+### Passo 2: Configurar o Banco de Dados
+
+1. Crie um banco de dados no MySQL, por exemplo, `todo_db`.
+2. No projeto, localize o arquivo `application.properties` dentro do diretório `src/main/resources`.
+3. Atualize as configurações do banco de dados com suas credenciais.
+### Passo 3: Compilar e Executar o Projeto
+
+Navegue até o diretório raiz do projeto e execute um dos comandos abaixo:
+
+- **Utilizando o Maven para rodar a aplicação:**
+
+```bash
+mvn spring-boot:run
+```
+
+## 🎨 3. Rodar o Frontend (Angular)
+
+1. Abra o terminal e execute o comando abaixo para clonar o repositório:
+
+   ```sh
+   https://github.com/matheusilveiraw/to-do-list-front-java
+   
+1. Vá para a pasta do frontend:
+   ```sh
+   cd ../frontend
+
+2. Instale as dependências do Angular:
+   ```
+    npm install
+   ```
+   
+3. Inicie o projeto:
+ ```
+    ng serve --open
+ ```
+
+O frontend estará disponível em http://localhost:4200/.
