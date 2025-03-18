@@ -17,14 +17,26 @@ export class TaskListComponent implements OnInit {
   }
 
   getTasks(): void {
-    this.todoService.getTodos().subscribe(
-      (data) => {
-        console.log(data);
-        this.tasks = data;
-      },
-      (error) => {
-        console.error('Erro ao buscar tarefas', error);
-      }
-    );
+    if (this.listTitle === 'A fazer') {
+      this.todoService.getTodosAFazer().subscribe(
+        (data) => {
+          console.log('A fazer:', data);
+          this.tasks = data;
+        },
+        (error) => {
+          console.error('Erro ao buscar tarefas a fazer', error);
+        }
+      );
+    } else if (this.listTitle === 'Feitas') {
+      this.todoService.getTodosFeitas().subscribe(
+        (data) => {
+          console.log('Feitas:', data);
+          this.tasks = data;
+        },
+        (error) => {
+          console.error('Erro ao buscar tarefas feitas', error);
+        }
+      );
+    }
   }
 }

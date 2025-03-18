@@ -13,4 +13,12 @@ export class TodoService {
   getTodos(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
+
+    getTodosAFazer(): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/fazer`);
+    }
+  
+    getTodosFeitas(): Observable<any> {
+      return this.http.get<any>(`${this.apiUrl}/feitos`);
+    }
 }
