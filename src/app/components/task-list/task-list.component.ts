@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { TodoService } from 'src/app/services/todo.service';
 })
 export class TaskListComponent implements OnInit {
   tasks: any[] = [];
+  @Input() listTitle: string = '';
 
   constructor(private todoService: TodoService) {}
 
