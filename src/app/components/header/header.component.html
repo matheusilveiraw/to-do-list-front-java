@@ -3,12 +3,11 @@
     <button (click)="openModal()">Adicionar Tarefa</button>
   </div>
   
-  <!-- Modal -->
   <div class="modal" *ngIf="isModalOpen">
     <div class="modal-content">
       <h2>Nova Tarefa</h2>
-      <input [(ngModel)]="newTaskTitle" placeholder="Título da Tarefa" />
-      <textarea [(ngModel)]="newTaskDescription" placeholder="Descrição da Tarefa"></textarea>
+      <!-- <input [(ngModel)]="newTaskTitle" placeholder="Título da Tarefa" /> -->
+      <!-- <textarea [(ngModel)]="newTaskDescription" placeholder="Descrição da Tarefa"></textarea> -->
       <button (click)="addTask()">Adicionar</button>
       <button (click)="closeModal()">Cancelar</button>
     </div>

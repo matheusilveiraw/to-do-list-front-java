@@ -22,6 +22,6 @@ export class HeaderComponent {
 
   addTask() {
     console.log('Nova Tarefa:', this.newTaskTitle, this.newTaskDescription);
-    this.closeModal();  // Fecha o modal após adicionar a tarefa
+    this.closeModal();
   }
 }

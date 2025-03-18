@@ -12,12 +12,12 @@ export class AppComponent implements OnInit {
   constructor(private todoService: TodoService) {}
 
   ngOnInit(): void {
-    this.todoService.getTodos().subscribe(
-      (data) => {
-        console.log('Dados recebidos:', data);
-        this.todos = data; // Salvar os dados no array
-      },
-      (error) => console.error('Erro ao buscar os dados:', error)
-    );
+    // this.todoService.getTodos().subscribe(
+    //   (data) => {
+    //     console.log('Dados recebidos:', data);
+    //     this.todos = data; 
+    //   },
+    //   (error) => console.error('Erro ao buscar os dados:', error)
+    // );
   }
 }
