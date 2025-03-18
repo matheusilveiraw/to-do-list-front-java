@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { TodoService } from 'src/app/services/todo.service';  
 
 @Component({
   selector: 'app-header',
@@ -7,8 +8,10 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   isModalOpen = false;
-  newTaskTitle = '';
-  newTaskDescription = '';
+  novaToDoTitle = '';
+  novaToDoDescription = '';
+
+  constructor(private todoService: TodoService) {} //
 
   openModal() {
     this.isModalOpen = true;
@@ -16,12 +19,26 @@ export class HeaderComponent {
 
   closeModal() {
     this.isModalOpen = false;
-    this.newTaskTitle = '';
-    this.newTaskDescription = '';
+    this.novaToDoTitle = '';
+    this.novaToDoDescription = '';
   }
 
-  addTask() {
-    console.log('Nova Tarefa:', this.newTaskTitle, this.newTaskDescription);
-    this.closeModal();
+  addToDo(): void {
+    console.log('Nova Tarefa:', this.novaToDoTitle, this.novaToDoDescription);
+
+    const novaToDo = {
+      nome: this.novaToDoTitle,
+      descricao: this.novaToDoDescription
+    };
+
+    this.todoService.addTodo(novaToDo).subscribe(
+      (response) => {
+        console.log('Tarefa adicionada com sucesso!', response);
+        this.closeModal();
+      },
+      (error) => {
+        console.error('Erro ao adicionar tarefa', error);
+      }
+    );
   }
 }

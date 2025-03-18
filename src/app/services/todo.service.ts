@@ -21,4 +21,11 @@ export class TodoService {
     getTodosFeitas(): Observable<any> {
       return this.http.get<any>(`${this.apiUrl}/feitos`);
     }
+
+    addTodo(novaToDo: { 
+      nome: string, 
+      descricao: string
+     }): Observable<any> {
+      return this.http.post<any>(this.apiUrl, novaToDo);
+    }
 }

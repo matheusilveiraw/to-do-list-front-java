@@ -1,14 +1,14 @@
 <div class="header">
     <h1>To Do List</h1>
-    <button (click)="openModal()">Adicionar Tarefa</button>
+    <button (click)="openModal()">Adicionar to do</button>
   </div>
   
   <div class="modal" *ngIf="isModalOpen">
     <div class="modal-content">
-      <h2>Nova Tarefa</h2>
-      <input [(ngModel)]="newTaskTitle" placeholder="Título da Tarefa" />
-      <textarea [(ngModel)]="newTaskDescription" placeholder="Descrição da Tarefa"></textarea>
-      <button (click)="addTask()">Adicionar</button>
+      <h2>Novo to do</h2>
+      <input [(ngModel)]="novaToDoTitle" placeholder="Título da Tarefa" />
+      <textarea [(ngModel)]="novaToDoDescription" placeholder="Descrição da Tarefa"></textarea>
+      <button (click)="addToDo()">Adicionar</button>
       <button (click)="closeModal()">Cancelar</button>
     </div>
   </div>
