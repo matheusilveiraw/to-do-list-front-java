@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';  
+import { LoadingService } from 'src/app/services/loading.service';
 
 @Component({
   selector: 'app-header',
@@ -11,7 +12,9 @@ export class HeaderComponent {
   novaToDoTitle = '';
   novaToDoDescription = '';
 
-  constructor(private todoService: TodoService) {} //
+  constructor(private todoService: TodoService,
+    private loadingService: LoadingService
+  ) {} //
 
   openModal() {
     this.isModalOpen = true;
@@ -31,13 +34,19 @@ export class HeaderComponent {
       descricao: this.novaToDoDescription
     };
 
+    this.loadingService.show();
+
     this.todoService.addTodo(novaToDo).subscribe(
       (response) => {
         console.log('Tarefa adicionada com sucesso!', response);
         this.closeModal();
+
+        this.loadingService.hide();
       },
       (error) => {
         console.error('Erro ao adicionar tarefa', error);
+
+        this.loadingService.hide();
       }
     );
   }
