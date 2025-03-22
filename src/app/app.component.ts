@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TodoService } from './services/todo.service';
+import { TaskListComponent } from 'src/app/components/task-list/task-list.component';
+
 
 @Component({
   selector: 'app-root',
@@ -8,6 +10,8 @@ import { TodoService } from './services/todo.service';
 })
 export class AppComponent implements OnInit {
   todos: any[] = [];
+  @ViewChild('listaAFazer') listaAFazer!: TaskListComponent;
+  @ViewChild('listaFeitas') listaFeitas!: TaskListComponent;
 
   constructor(private todoService: TodoService) {}
 
@@ -19,5 +23,14 @@ export class AppComponent implements OnInit {
     //   },
     //   (error) => console.error('Erro ao buscar os dados:', error)
     // );
+  }
+
+  atualizarListas() {
+    if (this.listaAFazer) {
+      this.listaAFazer.getTasks();
+    }
+    if (this.listaFeitas) {
+      this.listaFeitas.getTasks();
+    }
   }
 }

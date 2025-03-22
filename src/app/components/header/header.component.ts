@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';  
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -11,6 +11,8 @@ export class HeaderComponent {
   isModalOpen = false;
   novaToDoTitle = '';
   novaToDoDescription = '';
+  @Output() todoAdded = new EventEmitter<void>();
+
 
   constructor(private todoService: TodoService,
     private loadingService: LoadingService
@@ -40,12 +42,11 @@ export class HeaderComponent {
       (response) => {
         console.log('Tarefa adicionada com sucesso!', response);
         this.closeModal();
-
+        this.todoAdded.emit(); 
         this.loadingService.hide();
       },
       (error) => {
         console.error('Erro ao adicionar tarefa', error);
-
         this.loadingService.hide();
       }
     );
