@@ -1,5 +1,11 @@
 <div class="todo-item">
-    <h2>{{ task.nome }}</h2>
-    <p>{{ task.descricao}}</p>
-</div>
-  
+    <div class="todo-header">
+      <h2>{{ task.nome }}</h2>
+      <div class="todo-buttons">
+        <button>Finalizar</button>
+        <button>Editar</button>
+        <button>Deletar</button>
+      </div>
+    </div>
+    <p>{{ task.descricao }}</p>
+  </div>

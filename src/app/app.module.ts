@@ -7,8 +7,8 @@ import { HeaderComponent } from 'src/app/components/header/header.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component'; 
 import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component'; 
-
-
+import { MatButtonModule } from '@angular/material/button';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,9 @@ import { LoadingComponent } from './components/loading/loading.component';
   imports: [
     BrowserModule, 
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
