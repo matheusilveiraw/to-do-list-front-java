@@ -5,7 +5,8 @@ import { TaskListComponent } from './components/task-list/task-list.component';
 import { HttpClientModule } from '@angular/common/http'; 
 import { HeaderComponent } from 'src/app/components/header/header.component';
 import { TodoItemComponent } from './components/todo-item/todo-item.component'; 
-import { FormsModule } from '@angular/forms'; 
+import { FormsModule } from '@angular/forms';
+import { LoadingComponent } from './components/loading/loading.component'; 
 
 
 
@@ -14,7 +15,8 @@ import { FormsModule } from '@angular/forms';
     AppComponent, 
     TaskListComponent,
     HeaderComponent,
-    TodoItemComponent
+    TodoItemComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule, 
