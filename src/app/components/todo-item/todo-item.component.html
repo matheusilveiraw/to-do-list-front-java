@@ -1,11 +1,11 @@
 <div class="todo-item">
-    <div class="todo-header">
-      <h2>{{ task.nome }}</h2>
-      <div class="todo-buttons">
-        <button (click)="finalizarTarefa()">Finalizar</button>
-        <button>Editar</button>
-        <button>Deletar</button>
-      </div>
+  <div class="todo-header">
+    <h2>{{ task.nome }}</h2>
+    <div class="todo-buttons">
+      <button (click)="finalizarTarefa()">Finalizar</button>
+      <button (click)="openModalEditar()">Editar</button>
+      <button>Deletar</button>
     </div>
-    <p>{{ task.descricao }}</p>
   </div>
+  <p>{{ task.descricao }}</p>
+</div>

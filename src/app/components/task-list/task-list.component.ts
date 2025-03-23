@@ -12,7 +12,9 @@ export class TaskListComponent implements OnInit {
   tasks: any[] = [];
   @Input() listTitle: string = '';
   @Output() listaAtualizada = new EventEmitter<void>();
-
+  isModalOpen = false;
+  nomeToDoEditar = '';
+  descricaoToDoEditar = '';
 
   constructor(
     private todoService: TodoService,
@@ -59,6 +61,36 @@ export class TaskListComponent implements OnInit {
   atualizarLista() {
     this.getTasks();
     this.listaAtualizada.emit();
+  }
 
+  openModalEditar(todo: any) {
+    this.isModalOpen = true;
+    this.nomeToDoEditar = todo.nome;
+    this.descricaoToDoEditar = todo.descricao; 
+  }
+
+  closeModalEditar() {
+    this.isModalOpen = false;
+  }
+
+  salvarEdicao() {
+    const todo = this.tasks[0];
+
+    todo.nome = this.nomeToDoEditar;
+    todo.descricao = this.descricaoToDoEditar;
+
+    this.loadingService.show();
+
+   this.todoService.editarTodo(todo).subscribe(
+      (data) => {
+        this.loadingService.hide();
+      },
+      (error) => {
+        console.error('Erro ao editar tarefas a fazer', error);
+        this.loadingService.hide();
+      }
+    );
+    
+    this.closeModalEditar();
   }
 }

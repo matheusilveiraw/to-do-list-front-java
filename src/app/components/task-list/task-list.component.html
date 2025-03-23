@@ -1,5 +1,16 @@
 <h2>{{ listTitle }}</h2>
 <ul>
-  <app-todo-item *ngFor="let task of tasks" [task]="task" (tarefaFinalizada)="atualizarLista()"></app-todo-item>
+  <app-todo-item *ngFor="let task of tasks" [task]="task" (tarefaFinalizada)="atualizarLista()" (editarTarefaEvent)="openModalEditar($event)"></app-todo-item>
 </ul>
 
+<div class="modal" *ngIf="isModalOpen">
+  <div class="modal-content">
+    <h2>Editar To Do</h2>
+    <input [(ngModel)]="nomeToDoEditar" placeholder="Título da Tarefa" />
+    <textarea [(ngModel)]="descricaoToDoEditar" placeholder="Descrição da Tarefa"></textarea>
+    <div class="modal-buttons">
+      <button (click)="salvarEdicao()">Editar</button>
+      <button (click)="closeModalEditar()">Cancelar</button>
+    </div>
+  </div>
+</div>

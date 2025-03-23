@@ -10,7 +10,7 @@ import { LoadingService } from 'src/app/services/loading.service';
 export class TodoItemComponent {
   @Input() task: any;
   @Output() tarefaFinalizada = new EventEmitter<void>();
-  
+  @Output() editarTarefaEvent = new EventEmitter<any>(); 
 
   constructor(
     private todoService: TodoService,
@@ -33,5 +33,9 @@ export class TodoItemComponent {
         this.loadingService.hide();
       }
     );
+  }
+
+  openModalEditar() {
+    this.editarTarefaEvent.emit(this.task); 
   }
 }
