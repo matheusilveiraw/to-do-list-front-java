@@ -28,4 +28,8 @@ export class TodoService {
      }): Observable<any> {
       return this.http.post<any>(this.apiUrl, novaToDo);
     }
+
+    finalizarTodo(todo: any): Observable<any> {
+      return this.http.put<any>(`${this.apiUrl}/${todo.id}/finalizar`, todo);
+    }
 }

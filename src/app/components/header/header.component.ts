@@ -16,7 +16,7 @@ export class HeaderComponent {
 
   constructor(private todoService: TodoService,
     private loadingService: LoadingService
-  ) {} //
+  ) {}
 
   openModal() {
     this.isModalOpen = true;
