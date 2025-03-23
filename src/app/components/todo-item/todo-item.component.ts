@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -9,6 +9,8 @@ import { LoadingService } from 'src/app/services/loading.service';
 })
 export class TodoItemComponent {
   @Input() task: any;
+  @Output() tarefaFinalizada = new EventEmitter<void>();
+  
 
   constructor(
     private todoService: TodoService,
@@ -24,11 +26,10 @@ export class TodoItemComponent {
 
     this.todoService.finalizarTodo(this.task).subscribe(
       (response) => {
-        console.log('Tarefa adicionada com sucesso!', response);
+        this.tarefaFinalizada.emit();
         this.loadingService.hide();
       },
       (error) => {
-        console.error('Erro ao adicionar tarefa', error);
         this.loadingService.hide();
       }
     );

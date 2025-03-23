@@ -1,5 +1,5 @@
 <h2>{{ listTitle }}</h2>
 <ul>
-  <app-todo-item *ngFor="let task of tasks" [task]="task"></app-todo-item>
+  <app-todo-item *ngFor="let task of tasks" [task]="task" (tarefaFinalizada)="atualizarLista()"></app-todo-item>
 </ul>
 

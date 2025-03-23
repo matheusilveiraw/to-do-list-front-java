@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { LoadingService } from 'src/app/services/loading.service';
 
@@ -11,6 +11,8 @@ import { LoadingService } from 'src/app/services/loading.service';
 export class TaskListComponent implements OnInit {
   tasks: any[] = [];
   @Input() listTitle: string = '';
+  @Output() listaAtualizada = new EventEmitter<void>();
+
 
   constructor(
     private todoService: TodoService,
@@ -28,7 +30,6 @@ export class TaskListComponent implements OnInit {
 
       this.todoService.getTodosAFazer().subscribe(
         (data) => {
-          console.log('A fazer:', data);
           this.tasks = data;
 
           this.loadingService.hide();
@@ -42,7 +43,6 @@ export class TaskListComponent implements OnInit {
     } else if (this.listTitle === 'Feitas') {
       this.todoService.getTodosFeitas().subscribe(
         (data) => {
-          console.log('Feitas:', data);
           this.tasks = data;
 
           this.loadingService.hide();
@@ -54,5 +54,11 @@ export class TaskListComponent implements OnInit {
         }
       );
     }
+  }
+
+  atualizarLista() {
+    this.getTasks();
+    this.listaAtualizada.emit();
+
   }
 }
