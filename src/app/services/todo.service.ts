@@ -36,4 +36,8 @@ export class TodoService {
     editarTodo(todo: any): Observable<any> {
       return this.http.put<any>(`${this.apiUrl}/${todo.id}`, todo);
     }
+
+    deletarTodo(todo: any): Observable<any> {
+      return this.http.delete<any>(`${this.apiUrl}/${todo.id}`, todo);
+    }
 }

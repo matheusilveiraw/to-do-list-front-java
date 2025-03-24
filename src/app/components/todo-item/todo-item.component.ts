@@ -11,6 +11,7 @@ export class TodoItemComponent {
   @Input() task: any;
   @Output() tarefaFinalizada = new EventEmitter<void>();
   @Output() editarTarefaEvent = new EventEmitter<any>(); 
+  @Output() tarefaDeletada = new EventEmitter<void>();
 
   constructor(
     private todoService: TodoService,
@@ -38,4 +39,19 @@ export class TodoItemComponent {
   openModalEditar() {
     this.editarTarefaEvent.emit(this.task); 
   }
+
+  deletarToDo() {
+    this.loadingService.show();
+
+    this.todoService.deletarTodo(this.task).subscribe(
+      (response) => {
+        this.tarefaDeletada.emit();
+        this.loadingService.hide();
+      },
+      (error) => {
+        this.loadingService.hide();
+      }
+    );
+  }
+
 }

@@ -1,6 +1,6 @@
 <h2>{{ listTitle }}</h2>
 <ul>
-  <app-todo-item *ngFor="let task of tasks" [task]="task" (tarefaFinalizada)="atualizarLista()" (editarTarefaEvent)="openModalEditar($event)"></app-todo-item>
+  <app-todo-item *ngFor="let task of tasks" [task]="task" (tarefaFinalizada)="atualizarLista()" (editarTarefaEvent)="openModalEditar($event)" (tarefaDeletada)="atualizarLista()"></app-todo-item>
 </ul>
 
 <div class="modal" *ngIf="isModalOpen">
