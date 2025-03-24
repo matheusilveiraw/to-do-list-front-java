@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';  
 import { LoadingService } from 'src/app/services/loading.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 @Component({
   selector: 'app-header',
@@ -15,7 +16,8 @@ export class HeaderComponent {
 
 
   constructor(private todoService: TodoService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private notificationService: NotificationService
   ) {}
 
   openModal() {
@@ -29,8 +31,6 @@ export class HeaderComponent {
   }
 
   addToDo(): void {
-    console.log('Nova Tarefa:', this.novaToDoTitle, this.novaToDoDescription);
-
     const novaToDo = {
       nome: this.novaToDoTitle,
       descricao: this.novaToDoDescription
@@ -40,13 +40,14 @@ export class HeaderComponent {
 
     this.todoService.addTodo(novaToDo).subscribe(
       (response) => {
-        console.log('Tarefa adicionada com sucesso!', response);
+        // console.log('Tarefa adicionada com sucesso!', response);
+        this.notificationService.showSuccess('Tarefa adicionada com sucesso!');
         this.closeModal();
         this.todoAdded.emit(); 
         this.loadingService.hide();
       },
       (error) => {
-        console.error('Erro ao adicionar tarefa', error);
+        this.notificationService.showError('Erro ao adicionar tarefa.');
         this.loadingService.hide();
       }
     );

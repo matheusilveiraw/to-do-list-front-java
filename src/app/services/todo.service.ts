@@ -26,7 +26,7 @@ export class TodoService {
       nome: string, 
       descricao: string
      }): Observable<any> {
-      return this.http.post<any>(this.apiUrl, novaToDo);
+      return this.http.post<any>(this.apiUrl, this);
     }
 
     finalizarTodo(todo: any): Observable<any> {

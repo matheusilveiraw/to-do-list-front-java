@@ -9,6 +9,7 @@ import { FormsModule } from '@angular/forms';
 import { LoadingComponent } from './components/loading/loading.component'; 
 import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NotificationComponent } from './components/notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     TaskListComponent,
     HeaderComponent,
     TodoItemComponent,
-    LoadingComponent
+    LoadingComponent,
+    NotificationComponent
   ],
   imports: [
     BrowserModule, 
