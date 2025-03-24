@@ -74,15 +74,16 @@ export class TaskListComponent implements OnInit {
   }
 
   salvarEdicao() {
-    const todo = this.tasks[0];
+    const [todo] = this.tasks; //entre [] para destruturar o array e pegar o primeiro elemento
 
-    todo.nome = this.nomeToDoEditar;
-    todo.descricao = this.descricaoToDoEditar;
+    const dto = { ...todo, nome: this.nomeToDoEditar, descricao: this.descricaoToDoEditar };
 
     this.loadingService.show();
 
-   this.todoService.editarTodo(todo).subscribe(
+   this.todoService.editarTodo(dto).subscribe(
       (data) => {
+        todo.nome = data.nome;
+        todo.descricao = data.descricao;
         this.loadingService.hide();
       },
       (error) => {
