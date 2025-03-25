@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { TodoService } from 'src/app/services/todo.service';
 import { LoadingService } from 'src/app/services/loading.service';
+import { NotificationService } from 'src/app/services/notification.service';
 
 
 @Component({
@@ -18,7 +19,9 @@ export class TaskListComponent implements OnInit {
 
   constructor(
     private todoService: TodoService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private notificationService: NotificationService
+    
   ) {}
 
   ngOnInit(): void {
@@ -81,13 +84,15 @@ export class TaskListComponent implements OnInit {
     this.loadingService.show();
 
    this.todoService.editarTodo(dto).subscribe(
-      (data) => {
-        todo.nome = data.nome;
-        todo.descricao = data.descricao;
+      (response) => {
+        debugger
+        todo.nome = response.todo.nome;
+        todo.descricao = response.todo.descricao;
+        this.notificationService.showSuccess(response.message);
         this.loadingService.hide();
       },
       (error) => {
-        console.error('Erro ao editar tarefas a fazer', error);
+        this.notificationService.showError(error.error.message);
         this.loadingService.hide();
       }
     );
