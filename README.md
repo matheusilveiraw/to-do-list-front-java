@@ -64,6 +64,13 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 - Após finalizar tarefas, front atualiza as tarefas mostrando nas listas corretas;
 - Método editar funcionando pelo front;
 
+### 24/03/2025
+
+- Melhoria no código do editar no front;
+- Método deletar funcionando pelo front;
+- Criação do componente de notificações; 
+- Componente de notificações no adicionar to do feito e funcionando;
+
 ---
 
 ## 🚀 Tutorial: Como Baixar e Testar o Projeto
