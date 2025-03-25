@@ -40,7 +40,6 @@ export class HeaderComponent {
 
     this.todoService.addTodo(novaToDo).subscribe(
       (response) => {
-        // console.log('Tarefa adicionada com sucesso!', response);
         this.notificationService.showSuccess('Tarefa adicionada com sucesso!');
         this.closeModal();
         this.todoAdded.emit(); 
