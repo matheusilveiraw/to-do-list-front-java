@@ -40,13 +40,13 @@ export class HeaderComponent {
 
     this.todoService.addTodo(novaToDo).subscribe(
       (response) => {
-        this.notificationService.showSuccess('Tarefa adicionada com sucesso!');
+        this.notificationService.showSuccess(response.message);
         this.closeModal();
         this.todoAdded.emit(); 
         this.loadingService.hide();
       },
       (error) => {
-        this.notificationService.showError('Erro ao adicionar tarefa.');
+        this.notificationService.showError(error.error.message);
         this.loadingService.hide();
       }
     );
