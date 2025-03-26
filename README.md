@@ -46,7 +46,7 @@ Cada tarefa conterá os seguintes atributos inicialmente:
 
 ### 18/03/2025
 - Manutenção no componente task-list;
-- Manutenção no componente todo-item;
+- Criação do componente todo-item;
 - Projeto recebendo os dados do back e listando dentro dos componentes corretos no front (só está muito feio);
 - Tabelas recebendo nome correto delas;
 - Dois novos end-points criados no back: "feitos", get que trás todos os to dos feito, e "fazer", trás todos os todos a fazer;
