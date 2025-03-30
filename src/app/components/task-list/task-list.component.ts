@@ -85,7 +85,6 @@ export class TaskListComponent implements OnInit {
 
    this.todoService.editarTodo(dto).subscribe(
       (response) => {
-        debugger
         todo.nome = response.todo.nome;
         todo.descricao = response.todo.descricao;
         this.notificationService.showSuccess(response.message);
